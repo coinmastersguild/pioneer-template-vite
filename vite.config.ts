@@ -6,6 +6,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import checker from "vite-plugin-checker";
 import rollupNodePolyFill from 'rollup-plugin-node-polyfills'
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
+import { resolve } from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,6 +16,11 @@ export default defineConfig({
     checker({ typescript: true, eslint: { lintCommand: "eslint src" } }),
     tsconfigPaths(),
   ],
+  resolve: {
+    alias: {
+      'buffer': require.resolve('buffer/')
+    }
+  },
   server: {
     open: true,
     port: 4321,
