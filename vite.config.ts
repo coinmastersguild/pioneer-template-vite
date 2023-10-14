@@ -39,6 +39,21 @@ export default defineConfig({
     'process.env': {}
   },
   build:{
-    polyfillModulePreload: true,
+    minify: false,
+    rollupOptions: {
+      external: [
+        /^node:.*/,
+        ""
+      ],
+      plugins: [
+        // inject({ Buffer: ['Buffer','Buffer'], process: ['process'] }),
+        NodeGlobalsPolyfillPlugin({
+          process: true,
+          buffer: true
+        }),
+        //NodeModulesPolyfillPlugin()
+        rollupNodePolyFill()
+      ],
+    }
   }
 });
