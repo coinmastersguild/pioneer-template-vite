@@ -17,11 +17,12 @@ import {
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { usePioneer } from "@pioneer-sdk/pioneer-react";
 import { useEffect, useState } from "react";
+
 // import AssetSelect from "lib/components/AssetSelect";
 // import OutputSelect from "lib/components/OutputSelect";
 // import BlockchainSelect from "lib/components/BlockchainSelect";
 // import WalletSelect from "lib/components/WalletSelect";
-// import Basic from "./components/Basic";
+import Basic from "./components/Basic";
 // import Balances from "./components/Balances";
 // // import Pubkeys from "./components/Pubkeys";
 // import Transfer from "./components/Transfer";
@@ -119,7 +120,9 @@ const Home = () => {
         </TabList>
 
         <TabPanels>
-          <TabPanel>{/* <Basic></Basic> */}</TabPanel>
+          <TabPanel>
+            <Basic />
+          </TabPanel>
           <TabPanel>
             {/* <Balances openModal={openModal}></Balances> */}
           </TabPanel>
