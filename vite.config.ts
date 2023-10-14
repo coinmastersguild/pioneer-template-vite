@@ -4,6 +4,8 @@ import million from "million/compiler";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import checker from "vite-plugin-checker";
+import rollupNodePolyFill from 'rollup-plugin-node-polyfills'
+import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,6 +18,22 @@ export default defineConfig({
   server: {
     open: true,
     port: 4321,
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      // Node.js global to browser globalThis
+      define: {
+        global: 'globalThis'
+      },
+      // Enable esbuild polyfill plugins
+      plugins: [
+        NodeGlobalsPolyfillPlugin({
+          process: true,
+          buffer: true
+        }),
+        // NodeModulesPolyfillPlugin()
+      ],
+    }
   },
   define: {
     'process.env': {}
