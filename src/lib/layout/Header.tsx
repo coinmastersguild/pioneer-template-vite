@@ -22,7 +22,7 @@ import { usePioneer } from "@pioneer-sdk/pioneer-react";
 import { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 
-const PROJECT_NAME = "Swaps.PRO";
+const PROJECT_NAME = "* Your Projects name here *";
 // eslint-disable-next-line no-console
 const HeaderNew = () => {
   const { state, connectWallet } = usePioneer();
