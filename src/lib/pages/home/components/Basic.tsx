@@ -53,7 +53,7 @@ const Basic = () => {
             </Tr>
             <Tr>
               <Td>Outbound asset context</Td>
-              <Td>{address}</Td>{" "}
+              <Td>{address}</Td>
             </Tr>
           </Tbody>
           <Tfoot>
