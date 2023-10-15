@@ -1,8 +1,8 @@
 {
-  "name": "vite-react-chakra-starter",
+  "name": "pioneer-template",
   "version": "0.1.0",
   "private": true,
-  "author": "sozonome",
+  "author": "highlander",
   "scripts": {
     "pnpm": "pnpm i",
     "dev": "vite",
