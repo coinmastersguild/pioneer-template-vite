@@ -12,5 +12,5 @@ yarn-error.log*
 
 # Turbo
 .turbo
-
+.env
 .vscode/settings.json
