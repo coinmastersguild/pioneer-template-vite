@@ -19,27 +19,59 @@ import {
   Badge,
 } from "@chakra-ui/react";
 import { usePioneer } from "@pioneer-sdk/pioneer-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 
 const PROJECT_NAME = "* Your Projects name here *";
-// eslint-disable-next-line no-console
+
 const HeaderNew = () => {
   const { state, connectWallet } = usePioneer();
-  const [isOpen, setIsOpen] = useState(false);
-
   const {
     // api,
-    app,
-    // context,
+    // app,
+    context,
     // assetContext,
     // blockchainContext,
     // pubkeyContext,
     // modals,
   } = state;
+  const [showAll, setShowAll] = useState(false);
+
+  // Determine if any wallets are connected at the start
+  const isConnectedInitial =
+    state.app?.wallets?.some((wallet: any) => wallet.isConnected) ?? false;
+
+  // Open the drawer if no wallets are connected
+  const [isOpen, setIsOpen] = useState(!isConnectedInitial);
 
   const handleOpen = () => setIsOpen(true);
-  const handleClose = () => setIsOpen(false);
+
+  const handleClose = () => {
+    // If at least one wallet is connected, close the drawer, otherwise keep it open
+    if (state.app?.wallets?.some((wallet: any) => wallet.isConnected)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (state.app?.wallets) {
+      console.log("app.wallets: ", state.app.wallets);
+      // eslint-disable-next-line no-plusplus
+      for (let i = 0; i < state.app.wallets.length; i++) {
+        const wallet = state.app.wallets[i];
+        if (wallet?.wallet?.isDetected) {
+          console.log("wallet is available: ", wallet.type);
+        }
+      }
+    }
+  }, [state.app, state.app?.wallets]);
+
+  useEffect(() => {
+    if (context) {
+      console.log("context: ", context);
+      setIsOpen(false);
+    }
+  }, [context]);
 
   return (
     <Flex
@@ -50,57 +82,107 @@ const HeaderNew = () => {
       justifyContent="space-between"
       alignItems="center"
       p={5}
-      bg="gray.900" // change background color
-      borderColor="gray.200" // set border color
+      bg="gray.900"
+      borderColor="gray.200"
     >
-      {app && app.wallets && (
+      {state.app && state.app.wallets && (
         <Drawer isOpen={isOpen} placement="right" onClose={handleClose}>
           <DrawerOverlay>
             <DrawerContent>
               <DrawerCloseButton />
               <DrawerHeader>Wallets</DrawerHeader>
               <DrawerBody>
-                {app.wallets.map((wallet: any) => (
-                  <Card key={wallet.type}>
-                    <Box
-                      key={wallet.type}
-                      p={4}
-                      boxShadow="md"
-                      borderRadius="md"
-                      maxW="sm"
-                      w="full"
-                      mt={4}
-                      onClick={() => connectWallet(wallet.type)}
-                    >
-                      <HStack spacing={4}>
-                        <Avatar src={wallet.icon} name={wallet.type} />
-                        <VStack alignItems="start" spacing={1}>
-                          <Text fontWeight="bold">{wallet.type}</Text>
-
-                          <HStack spacing={2}>
-                            <Badge
-                              colorScheme={
-                                wallet.status === "offline" ? "red" : "green"
-                              }
-                            >
-                              {wallet.status.toUpperCase()}
-                            </Badge>
-
-                            <Badge
-                              colorScheme={wallet.isConnected ? "green" : "red"}
-                            >
-                              {wallet.isConnected
-                                ? "CONNECTED"
-                                : "DISCONNECTED"}
-                            </Badge>
+                <small>context: {context}</small>
+                {showAll
+                  ? state.app.wallets.map((wallet: any) => (
+                      <Card key={wallet.type}>
+                        <Box
+                          key={wallet.type}
+                          p={4}
+                          boxShadow="md"
+                          borderRadius="md"
+                          maxW="sm"
+                          w="full"
+                          mt={4}
+                          onClick={() => connectWallet(wallet.type)}
+                          opacity={wallet.wallet.isDetected ? 1 : 0.5} // change opacity based on detection
+                        >
+                          <HStack spacing={4}>
+                            <Avatar src={wallet.icon} name={wallet.type} />
+                            <VStack alignItems="start" spacing={1}>
+                              <Text fontWeight="bold">{wallet.type}</Text>
+                              <HStack spacing={2}>
+                                {wallet.wallet.isDetected ? (
+                                  <Badge colorScheme="green">AVAILABLE</Badge>
+                                ) : (
+                                  <Badge colorScheme="gray">UNAVAILABLE</Badge>
+                                )}
+                                <Badge
+                                  colorScheme={
+                                    wallet.isConnected ? "green" : "red"
+                                  }
+                                >
+                                  {wallet.isConnected
+                                    ? "CONNECTED"
+                                    : "DISCONNECTED"}
+                                </Badge>
+                              </HStack>
+                            </VStack>
                           </HStack>
-                        </VStack>
-                      </HStack>
-                    </Box>
-                  </Card>
-                ))}
+                        </Box>
+                      </Card>
+                    ))
+                  : state.app.wallets
+                      .filter((wallet: any) => wallet.wallet.isDetected)
+                      .map((wallet: any) => (
+                        <Card key={wallet.type}>
+                          <Box
+                            key={wallet.type}
+                            p={4}
+                            boxShadow="md"
+                            borderRadius="md"
+                            maxW="sm"
+                            w="full"
+                            mt={4}
+                            onClick={() => connectWallet(wallet.type)}
+                            opacity={wallet.wallet.isDetected ? 1 : 0.5} // change opacity based on detection
+                          >
+                            <HStack spacing={4}>
+                              <Avatar src={wallet.icon} name={wallet.type} />
+                              <VStack alignItems="start" spacing={1}>
+                                <Text fontWeight="bold">{wallet.type}</Text>
+                                <HStack spacing={2}>
+                                  {wallet.wallet.isDetected ? (
+                                    <Badge colorScheme="green">AVAILABLE</Badge>
+                                  ) : (
+                                    <Badge colorScheme="gray">
+                                      UNAVAILABLE
+                                    </Badge>
+                                  )}
+                                  <Badge
+                                    colorScheme={
+                                      wallet.isConnected ? "green" : "red"
+                                    }
+                                  >
+                                    {wallet.isConnected
+                                      ? "CONNECTED"
+                                      : "DISCONNECTED"}
+                                  </Badge>
+                                </HStack>
+                              </VStack>
+                            </HStack>
+                          </Box>
+                        </Card>
+                      ))}
+                <Button
+                  mt={4}
+                  onClick={() => setShowAll((prev) => !prev)}
+                  size="sm"
+                >
+                  {showAll ? "Hide Options" : "Show All Options"}
+                </Button>
               </DrawerBody>
-              <DrawerFooter>{/* Any footer content if needed */}</DrawerFooter>
+              <DrawerFooter />
             </DrawerContent>
           </DrawerOverlay>
         </Drawer>
@@ -112,9 +194,7 @@ const HeaderNew = () => {
           </Box>
         </RouterLink>
       </HStack>
-      <br />
       <Button onClick={handleOpen}>Connect</Button>
-      {/* <Pioneer /> */}
     </Flex>
   );
 };
