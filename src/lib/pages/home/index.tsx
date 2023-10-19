@@ -22,8 +22,8 @@ import { useEffect, useState } from "react";
 // import OutputSelect from "lib/components/OutputSelect";
 // import BlockchainSelect from "lib/components/BlockchainSelect";
 // import WalletSelect from "lib/components/WalletSelect";
+import Balances from "./components/Balances";
 import Basic from "./components/Basic";
-// import Balances from "./components/Balances";
 // // import Pubkeys from "./components/Pubkeys";
 // import Transfer from "./components/Transfer";
 // import Swap from "./components/Swap";
@@ -36,6 +36,7 @@ const Home = () => {
     // context,
     // assetContext,
     // blockchainContext,
+    balances,
     pubkeyContext,
     // modals,
   } = state;
@@ -57,8 +58,8 @@ const Home = () => {
 
   const refresh = async () => {
     // TODO why do I need to press refresh?
-    // console.log("2 pubkeyContext: ", pubkeyContext);
-    // console.log("2 balances: ", app.balances);
+    console.log("2 pubkeyContext: ", pubkeyContext);
+    console.log("2 balances: ", balances);
     if (pubkeyContext)
       setAddress(
         pubkeyContext?.master || pubkeyContext?.pubkey || pubkeyContext
@@ -124,7 +125,7 @@ const Home = () => {
             <Basic />
           </TabPanel>
           <TabPanel>
-            {/* <Balances openModal={openModal}></Balances> */}
+            <Balances />
           </TabPanel>
           <TabPanel>
             {/* <Transfer openModal={openModal}></Transfer> */}

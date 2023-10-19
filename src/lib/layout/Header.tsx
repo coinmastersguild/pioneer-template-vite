@@ -92,7 +92,13 @@ const HeaderNew = () => {
               <DrawerCloseButton />
               <DrawerHeader>Wallets</DrawerHeader>
               <DrawerBody>
-                <small>context: {context}</small>
+                {!context ? (
+                  <Text>You must pair a wallet to continue</Text>
+                ) : (
+                  <Text>
+                    <small>context: {JSON.stringify(context)}</small>
+                  </Text>
+                )}
                 {showAll
                   ? state.app.wallets.map((wallet: any) => (
                       <Card key={wallet.type}>
