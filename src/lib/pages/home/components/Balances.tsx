@@ -22,8 +22,9 @@ const Balances = () => {
   }
   return (
     <Stack spacing={4}>
-      {balances.map((balance: any) => (
-        <Card key={balance.asset.name}>
+      {balances.map((balance: any, index: number) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <Card key={index}>
           <CardHeader>
             <Heading size="md">{balance.asset.name}</Heading>
           </CardHeader>

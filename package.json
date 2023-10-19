@@ -21,12 +21,16 @@
     "push-release": "git push --follow-tags origin main"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "@fontsource/plus-jakarta-sans": "^5.0.15",
+    "@pioneer-platform/pioneer-coins": "^8.1.86",
+    "@pioneer-platform/swapkit-entities": "^3.0.1",
+    "@pioneer-platform/types": "^3.0.1",
     "@pioneer-sdk/pioneer-react": "^0.0.24",
     "@typescript-eslint/parser": "^6.7.5",
     "buffer": "^6.0.3",

@@ -18,14 +18,15 @@ import {
 import { usePioneer } from "@pioneer-sdk/pioneer-react";
 import { useEffect, useState } from "react";
 
-// import AssetSelect from "lib/components/AssetSelect";
+import AssetSelect from "lib/components/AssetSelect";
+
 // import OutputSelect from "lib/components/OutputSelect";
 // import BlockchainSelect from "lib/components/BlockchainSelect";
 // import WalletSelect from "lib/components/WalletSelect";
 import Balances from "./components/Balances";
 import Basic from "./components/Basic";
 // // import Pubkeys from "./components/Pubkeys";
-// import Transfer from "./components/Transfer";
+import Transfer from "./components/Transfer";
 // import Swap from "./components/Swap";
 
 const Home = () => {
@@ -41,8 +42,8 @@ const Home = () => {
     // modals,
   } = state;
   const [address, setAddress] = useState("");
-  const [modalType] = useState("");
-  const { isOpen, onClose } = useDisclosure();
+  const [modalType, setModalType] = useState("");
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     if (pubkeyContext)
@@ -51,10 +52,10 @@ const Home = () => {
       );
   }, [pubkeyContext]);
 
-  // const openModal = (type: any) => {
-  //   setModalType(type);
-  //   onOpen();
-  // };
+  const openModal = (type: any) => {
+    setModalType(type);
+    onOpen();
+  };
 
   const refresh = async () => {
     // TODO why do I need to press refresh?
@@ -81,11 +82,11 @@ const Home = () => {
             {/*    <WalletSelect onClose={onClose}></WalletSelect> */}
             {/*  </div> */}
             {/* )} */}
-            {/* {modalType === "Select Asset" && ( */}
-            {/*  <div> */}
-            {/*    <AssetSelect onClose={onClose} onlyOwned={true}></AssetSelect> */}
-            {/*  </div> */}
-            {/* )} */}
+            {modalType === "Select Asset" && (
+              <div>
+                <AssetSelect onClose={onClose} onlyOwned />
+              </div>
+            )}
             {/* {modalType === "Select Blockchain" && ( */}
             {/*  <div> */}
             {/*    <BlockchainSelect onClose={onClose}></BlockchainSelect> */}
@@ -128,7 +129,7 @@ const Home = () => {
             <Balances />
           </TabPanel>
           <TabPanel>
-            {/* <Transfer openModal={openModal}></Transfer> */}
+            <Transfer openModal={openModal} />
           </TabPanel>
           <TabPanel>{/* <Swap openModal={openModal}></Swap> */}</TabPanel>
           <TabPanel>

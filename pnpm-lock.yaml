@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@chakra-ui/icons':
+    specifier: ^2.1.1
+    version: 2.1.1(@chakra-ui/system@2.6.1)(react@18.2.0)
   '@chakra-ui/react':
     specifier: ^2.8.1
     version: 2.8.1(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.27)(framer-motion@10.16.4)(react-dom@18.2.0)(react@18.2.0)
@@ -23,6 +26,15 @@ dependencies:
   '@fontsource/plus-jakarta-sans':
     specifier: ^5.0.15
     version: 5.0.15
+  '@pioneer-platform/pioneer-coins':
+    specifier: ^8.1.86
+    version: 8.1.86(@types/node@20.8.4)
+  '@pioneer-platform/swapkit-entities':
+    specifier: ^3.0.1
+    version: 3.0.1(bignumber.js@9.1.2)
+  '@pioneer-platform/types':
+    specifier: ^3.0.1
+    version: 3.0.1
   '@pioneer-sdk/pioneer-react':
     specifier: ^0.0.24
     version: >-
@@ -4495,8 +4507,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@shapeshiftoss/hdwallet-core@1.52.6:
-    resolution: {integrity: sha512-2Us87Q1aSNipxn1WPVmBsjLbXSBaTJF/jaVJwzfjSgQUgswoKfn57l2zOIVp9/bQse2nZGovfJ8SMB1fxWweNA==}
+  /@shapeshiftoss/hdwallet-core@1.52.7:
+    resolution: {integrity: sha512-zdMxIgZ0f38IRNY5b4QykQoDlQNhRYAzxcjDGSU3nzWaxHES5nFQZPKD0g97+L9fgApFExQ98fDDNP+6DTDoGA==}
     dependencies:
       '@shapeshiftoss/proto-tx-builder': 0.8.0
       eip-712: 1.0.0
@@ -12769,7 +12781,7 @@ packages:
       '@bithighlander/bitcoin-cash-js-lib': 5.2.1
       '@pioneer-platform/loggerdog': 8.1.31(@types/node@15.14.9)
       '@pioneer-platform/pioneer-coins': 8.1.86(@types/node@15.14.9)
-      '@shapeshiftoss/hdwallet-core': 1.52.6
+      '@shapeshiftoss/hdwallet-core': 1.52.7
       '@types/node': 15.14.9
       bip39: 3.1.0
       codeclimate-test-reporter: 0.5.1
