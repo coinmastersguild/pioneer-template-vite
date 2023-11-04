@@ -18,7 +18,8 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      'buffer': require.resolve('buffer/')
+      'buffer': require.resolve('buffer/'),
+      'events': require.resolve('events/'),
     }
   },
   server: {

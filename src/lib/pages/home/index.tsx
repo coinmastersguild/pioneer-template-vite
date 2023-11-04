@@ -30,7 +30,7 @@ import Transfer from "./components/Transfer";
 // import Swap from "./components/Swap";
 
 const Home = () => {
-  const { state } = usePioneer();
+  const { state, onStart } = usePioneer();
   const {
     // api,
     // app,
@@ -44,6 +44,17 @@ const Home = () => {
   const [address, setAddress] = useState("");
   const [modalType, setModalType] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  // start the context provider
+  useEffect(() => {
+    // if(txid){
+    //   //set the txid
+    //   // @ts-ignore
+    //   setTxhash(txid);
+    //   setStep(2);
+    // }
+    onStart();
+  }, []);
 
   useEffect(() => {
     if (pubkeyContext)
