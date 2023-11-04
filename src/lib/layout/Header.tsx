@@ -1,30 +1,31 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+// import { HamburgerIcon } from "@chakra-ui/icons";
 import {
-  Card,
-  Button,
+  Avatar,
+  Badge,
   Box,
-  Flex,
-  HStack,
-  Text,
+  Button,
+  Card,
   Drawer,
   DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  Avatar,
+  Flex,
+  HStack,
+  Text,
   VStack,
-  Badge,
 } from "@chakra-ui/react";
 import { usePioneer } from "@pioneer-sdk/pioneer-react";
-import { useState, useEffect } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const PROJECT_NAME = "* Your Projects name here *";
+// Import the image from the assets
+const PROJECT_NAME = " * Your dApp Name Here * ";
 
 const HeaderNew = () => {
+  const navigate = useNavigate();
   const { state, connectWallet } = usePioneer();
   const {
     // api,
@@ -53,9 +54,30 @@ const HeaderNew = () => {
     }
   };
 
+  const handleLogoClick = () => {
+    // Add additional stuff here before navigating
+    console.log("The logo was clicked!");
+
+    // Navigate to the homepage
+    navigate("/");
+    // Force a full page reload
+    window.location.reload();
+  };
+
+  // History
+  // const handleHistoryClick = () => {
+  //   try {
+  //     //
+  //     console.log("The history was clicked!");
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
+
   useEffect(() => {
     if (state.app?.wallets) {
       console.log("app.wallets: ", state.app.wallets);
+
       // eslint-disable-next-line no-plusplus
       for (let i = 0; i < state.app.wallets.length; i++) {
         const wallet = state.app.wallets[i];
@@ -75,21 +97,19 @@ const HeaderNew = () => {
 
   return (
     <Flex
-      as="header"
-      width="full"
+      alignItems="center"
       alignSelf="flex-start"
+      as="header"
       gridGap={2}
       justifyContent="space-between"
-      alignItems="center"
       p={5}
-      bg="gray.900"
-      borderColor="gray.200"
+      width="full"
     >
       {state.app && state.app.wallets && (
-        <Drawer isOpen={isOpen} placement="right" onClose={handleClose}>
+        <Drawer isOpen={isOpen} onClose={handleClose} placement="right">
           <DrawerOverlay>
-            <DrawerContent>
-              <DrawerCloseButton />
+            <DrawerContent bg="black" border="2px solid white">
+              <DrawerCloseButton onClick={() => setIsOpen(false)} />
               <DrawerHeader>Wallets</DrawerHeader>
               <DrawerBody>
                 {!context ? (
@@ -103,18 +123,19 @@ const HeaderNew = () => {
                   ? state.app.wallets.map((wallet: any) => (
                       <Card key={wallet.type}>
                         <Box
-                          key={wallet.type}
-                          p={4}
-                          boxShadow="md"
+                          bg="black"
                           borderRadius="md"
+                          boxShadow="md"
+                          key={wallet.type}
                           maxW="sm"
-                          w="full"
                           mt={4}
                           onClick={() => connectWallet(wallet.type)}
                           opacity={wallet.wallet.isDetected ? 1 : 0.5} // change opacity based on detection
+                          p={4}
+                          w="full"
                         >
                           <HStack spacing={4}>
-                            <Avatar src={wallet.icon} name={wallet.type} />
+                            <Avatar name={wallet.type} src={wallet.icon} />
                             <VStack alignItems="start" spacing={1}>
                               <Text fontWeight="bold">{wallet.type}</Text>
                               <HStack spacing={2}>
@@ -143,18 +164,19 @@ const HeaderNew = () => {
                       .map((wallet: any) => (
                         <Card key={wallet.type}>
                           <Box
-                            key={wallet.type}
-                            p={4}
-                            boxShadow="md"
+                            bg="black"
                             borderRadius="md"
+                            boxShadow="md"
+                            key={wallet.type}
                             maxW="sm"
-                            w="full"
                             mt={4}
                             onClick={() => connectWallet(wallet.type)}
                             opacity={wallet.wallet.isDetected ? 1 : 0.5} // change opacity based on detection
+                            p={4}
+                            w="full"
                           >
                             <HStack spacing={4}>
-                              <Avatar src={wallet.icon} name={wallet.type} />
+                              <Avatar name={wallet.type} src={wallet.icon} />
                               <VStack alignItems="start" spacing={1}>
                                 <Text fontWeight="bold">{wallet.type}</Text>
                                 <HStack spacing={2}>
@@ -193,14 +215,25 @@ const HeaderNew = () => {
           </DrawerOverlay>
         </Drawer>
       )}
-      <HStack spacing={8}>
-        <RouterLink to="/">
-          <Box>
-            <Text fontSize="3xl">{PROJECT_NAME}</Text>
-          </Box>
-        </RouterLink>
+      <HStack alignItems="center" onClick={handleLogoClick} spacing={4}>
+        <Avatar name="logo" />
+        <Text fontSize="3xl">{PROJECT_NAME}</Text>
       </HStack>
-      <Button onClick={handleOpen}>Connect</Button>
+      {context ? (
+        <div>
+          <Button onClick={handleOpen}>Connected</Button>
+          {/* <Button */}
+          {/*  colorScheme="green" */}
+          {/*  leftIcon={<HamburgerIcon />} */}
+          {/*  onClick={handleHistoryClick} */}
+          {/*  variant="solid" */}
+          {/* /> */}
+        </div>
+      ) : (
+        <div>
+          <Button onClick={handleOpen}>Connect</Button>
+        </div>
+      )}
     </Flex>
   );
 };
