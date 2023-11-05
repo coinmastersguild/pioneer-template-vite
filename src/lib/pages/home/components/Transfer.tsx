@@ -22,8 +22,9 @@ import {
 } from "@pioneer-platform/swapkit-entities";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Chain } from "@pioneer-platform/types";
-import { usePioneer } from "@pioneer-sdk/pioneer-react";
 import { useState, useCallback } from "react";
+
+import { usePioneer } from "~/lib/context/Pioneer";
 
 const Transfer = ({ openModal }: any) => {
   const toast = useToast();

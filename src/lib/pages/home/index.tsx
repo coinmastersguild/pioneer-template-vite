@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/order
 import {
   Button,
   useDisclosure,
@@ -14,11 +15,12 @@ import {
   Tab,
   TabPanel,
 } from "@chakra-ui/react";
+
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { usePioneer } from "@pioneer-sdk/pioneer-react";
 import { useEffect, useState } from "react";
 
 import AssetSelect from "lib/components/AssetSelect";
+import { usePioneer } from "~/lib/context/Pioneer";
 
 // import OutputSelect from "lib/components/OutputSelect";
 // import BlockchainSelect from "lib/components/BlockchainSelect";

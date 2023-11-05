@@ -24,8 +24,9 @@ import {
 // @ts-ignore
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { COIN_MAP_LONG } from "@pioneer-platform/pioneer-coins";
-import { usePioneer } from "@pioneer-sdk/pioneer-react";
 import { useState, useEffect } from "react";
+
+import { usePioneer } from "~/lib/context/Pioneer";
 
 export default function AssetSelect({ onClose }: any) {
   const { state } = usePioneer();

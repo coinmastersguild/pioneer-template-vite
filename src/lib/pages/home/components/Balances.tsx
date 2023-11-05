@@ -9,8 +9,9 @@ import {
   Box,
   StackDivider,
 } from "@chakra-ui/react";
+
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { usePioneer } from "@pioneer-sdk/pioneer-react";
+import { usePioneer } from "~/lib/context/Pioneer";
 // import { useState, useEffect } from "react";
 
 const Balances = () => {

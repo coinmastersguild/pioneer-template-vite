@@ -17,9 +17,10 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { usePioneer } from "@pioneer-sdk/pioneer-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { usePioneer } from "~/lib/context/Pioneer";
 
 // Import the image from the assets
 const PROJECT_NAME = " * Your dApp Name Here * ";
