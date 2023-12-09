@@ -1,8 +1,9 @@
 // @ts-ignore
 import { usePioneer } from "@pioneer-sdk/pioneer-react";
 import { useEffect } from "react";
-import { initWallets } from "./setup";
+
 import Basic from "./components/Basic";
+import { initWallets } from "./setup";
 
 const Home = () => {
   const { onStart } = usePioneer();
