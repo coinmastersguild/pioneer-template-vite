@@ -89,30 +89,39 @@ const Home = () => {
       // Importing wallets
 
       // @ts-ignore
+      // eslint-disable-next-line import/no-extraneous-dependencies
       const { keepkeyWallet } = await import("@coinmasters/wallet-keepkey");
 
       // @ts-ignore
+      // eslint-disable-next-line import/no-extraneous-dependencies
       const { keplrWallet } = await import("@coinmasters/wallet-keplr");
 
       // @ts-ignore
+      // eslint-disable-next-line import/no-extraneous-dependencies
       const { keystoreWallet } = await import("@coinmasters/wallet-keystore");
 
       // @ts-ignore
+      // eslint-disable-next-line import/no-extraneous-dependencies
       const { metamaskWallet } = await import("@coinmasters/wallet-metamask");
 
       // @ts-ignore
+      // eslint-disable-next-line import/no-extraneous-dependencies
       const { ledgerWallet } = await import("@coinmasters/wallet-ledger");
 
       // @ts-ignore
+      // eslint-disable-next-line import/no-extraneous-dependencies
       const { okxWallet } = await import("@coinmasters/wallet-okx");
 
       // @ts-ignore
+      // eslint-disable-next-line import/no-extraneous-dependencies
       const { trezorWallet } = await import("@coinmasters/wallet-trezor");
 
       // @ts-ignore
+      // eslint-disable-next-line import/no-extraneous-dependencies
       const { walletconnectWallet } = await import("@coinmasters/wallet-wc");
 
       // @ts-ignore
+      // eslint-disable-next-line import/no-extraneous-dependencies
       const { xdefiWallet } = await import("@coinmasters/wallet-xdefi");
 
       // Initialize and push each wallet into the wallets array
