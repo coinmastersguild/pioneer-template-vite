@@ -1,4 +1,5 @@
 import { ChakraProvider, useColorMode } from "@chakra-ui/react";
+// @ts-ignore
 import { PioneerProvider } from "@pioneer-sdk/pioneer-react";
 import type React from "react";
 import { useEffect } from "react";

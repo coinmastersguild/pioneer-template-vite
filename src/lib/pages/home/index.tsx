@@ -1,157 +1,229 @@
-import {
-  Button,
-  useDisclosure,
-  Modal,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-} from "@chakra-ui/react";
 // eslint-disable-next-line import/no-extraneous-dependencies
+import { Chain, EVMChainList, WalletOption } from "@coinmasters/types";
+// @ts-ignore
 import { usePioneer } from "@pioneer-sdk/pioneer-react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-import AssetSelect from "lib/components/AssetSelect";
-
+// import AssetSelect from "lib/components/AssetSelect";
 // import OutputSelect from "lib/components/OutputSelect";
 // import BlockchainSelect from "lib/components/BlockchainSelect";
 // import WalletSelect from "lib/components/WalletSelect";
-import Balances from "./components/Balances";
+// import Balances from "./components/Balances";
 import Basic from "./components/Basic";
 // // import Pubkeys from "./components/Pubkeys";
-import Transfer from "./components/Transfer";
+// import Transfer from "./components/Transfer";
 // import Swap from "./components/Swap";
+// @ts-ignore
+
+// Support Array
+const AllChainsSupported = [
+  Chain.Arbitrum,
+  Chain.Avalanche,
+  Chain.Binance,
+  Chain.BinanceSmartChain,
+  Chain.Bitcoin,
+  Chain.BitcoinCash,
+  Chain.Cosmos,
+  Chain.Dogecoin,
+  Chain.Ethereum,
+  Chain.Litecoin,
+  Chain.Optimism,
+  Chain.Polygon,
+  Chain.THORChain,
+] as Chain[];
+
+export const availableChainsByWallet: any = {
+  [WalletOption.BRAVE]: EVMChainList,
+  [WalletOption.COINBASE_WEB]: EVMChainList,
+  [WalletOption.KEPLR]: [Chain.Cosmos],
+  [WalletOption.KEYSTORE]: AllChainsSupported,
+  [WalletOption.LEDGER]: AllChainsSupported,
+  [WalletOption.TREZOR]: [
+    Chain.Bitcoin,
+    Chain.BitcoinCash,
+    Chain.Litecoin,
+    Chain.Dogecoin,
+    Chain.Ethereum,
+  ],
+  [WalletOption.KEEPKEY]: AllChainsSupported,
+  [WalletOption.METAMASK]: [
+    Chain.Arbitrum,
+    Chain.Avalanche,
+    Chain.BinanceSmartChain,
+    Chain.Bitcoin,
+    Chain.BitcoinCash,
+    Chain.Cosmos,
+    Chain.Dogecoin,
+    Chain.Ethereum,
+    Chain.Litecoin,
+    Chain.Optimism,
+    Chain.Polygon,
+    Chain.THORChain,
+  ],
+  [WalletOption.TRUSTWALLET_WEB]: EVMChainList,
+  [WalletOption.XDEFI]: AllChainsSupported,
+  [WalletOption.WALLETCONNECT]: [
+    Chain.Ethereum,
+    Chain.Binance,
+    Chain.BinanceSmartChain,
+    Chain.Avalanche,
+    Chain.THORChain,
+  ],
+  [WalletOption.OKX]: [
+    Chain.Ethereum,
+    Chain.Avalanche,
+    Chain.BinanceSmartChain,
+    Chain.Bitcoin,
+    Chain.Cosmos,
+  ],
+};
 
 const Home = () => {
-  const { state, onStart } = usePioneer();
-  const {
-    // api,
-    // app,
-    // context,
-    // assetContext,
-    // blockchainContext,
-    balances,
-    pubkeyContext,
-    // modals,
-  } = state;
-  const [address, setAddress] = useState("");
-  const [modalType, setModalType] = useState("");
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { onStart } = usePioneer();
+
+  const loadWallets = async () => {
+    try {
+      // const tag = `${TAG} | initializeWallets | `;
+      const walletsVerbose: any = [];
+
+      // Importing wallets
+
+      // @ts-ignore
+      const { keepkeyWallet } = await import("@coinmasters/wallet-keepkey");
+
+      // @ts-ignore
+      const { keplrWallet } = await import("@coinmasters/wallet-keplr");
+
+      // @ts-ignore
+      const { keystoreWallet } = await import("@coinmasters/wallet-keystore");
+
+      // @ts-ignore
+      const { metamaskWallet } = await import("@coinmasters/wallet-metamask");
+
+      // @ts-ignore
+      const { ledgerWallet } = await import("@coinmasters/wallet-ledger");
+
+      // @ts-ignore
+      const { okxWallet } = await import("@coinmasters/wallet-okx");
+
+      // @ts-ignore
+      const { trezorWallet } = await import("@coinmasters/wallet-trezor");
+
+      // @ts-ignore
+      const { walletconnectWallet } = await import("@coinmasters/wallet-wc");
+
+      // @ts-ignore
+      const { xdefiWallet } = await import("@coinmasters/wallet-xdefi");
+
+      // Initialize and push each wallet into the wallets array
+      const walletKeepKey = {
+        type: WalletOption.KEEPKEY,
+        icon: "https://pioneers.dev/coins/keepkey.png",
+        chains: availableChainsByWallet[WalletOption.KEEPKEY],
+        wallet: keepkeyWallet,
+        status: "offline",
+        isConnected: false,
+      };
+      walletsVerbose.push(walletKeepKey);
+      const walletMetaMask = {
+        type: WalletOption.METAMASK,
+        icon: "https://pioneers.dev/coins/metamask.png",
+        chains: availableChainsByWallet[WalletOption.METAMASK],
+        wallet: metamaskWallet,
+        status: "offline",
+        isConnected: false,
+      };
+      walletsVerbose.push(walletMetaMask);
+      // const walletEVM = {
+      //   type: "EVM", // TODO
+      //   icon: "https://pioneers.dev/coins/evm.png",
+      //   chains: availableChainsByWallet.EVM, // TODO
+      //   wallet: evmWallet,
+      //   status: "offline",
+      //   isConnected: false,
+      // };
+      // wallets.push(evmWallet);
+      // walletsVerbose.push(walletEVM);
+      const walletKeplr = {
+        type: WalletOption.KEPLR,
+        icon: "https://pioneers.dev/coins/keplr.png",
+        chains: availableChainsByWallet[WalletOption.KEPLR],
+        wallet: keplrWallet,
+        status: "offline",
+        isConnected: false,
+      };
+      walletsVerbose.push(walletKeplr);
+      const walletKeystore = {
+        type: WalletOption.KEYSTORE,
+        icon: "https://pioneers.dev/coins/keystore.png",
+        chains: availableChainsByWallet[WalletOption.KEYSTORE],
+        wallet: keystoreWallet,
+        status: "offline",
+        isConnected: false,
+      };
+      walletsVerbose.push(walletKeystore);
+      const walletLedger = {
+        type: WalletOption.LEDGER,
+        icon: "https://pioneers.dev/coins/ledger.png",
+        chains: availableChainsByWallet[WalletOption.LEDGER],
+        wallet: ledgerWallet,
+        status: "offline",
+        isConnected: false,
+      };
+      walletsVerbose.push(walletLedger);
+      const walletOKX = {
+        type: WalletOption.OKX,
+        icon: "https://pioneers.dev/coins/okx.png",
+        chains: availableChainsByWallet[WalletOption.OKX],
+        wallet: okxWallet,
+        status: "offline",
+        isConnected: false,
+      };
+      walletsVerbose.push(walletOKX);
+      const walletTrezor = {
+        type: WalletOption.TREZOR,
+        icon: "https://pioneers.dev/coins/trezor.png",
+        chains: availableChainsByWallet[WalletOption.TREZOR],
+        wallet: trezorWallet,
+        status: "offline",
+        isConnected: false,
+      };
+      walletsVerbose.push(walletTrezor);
+      const walletWalletConnect = {
+        type: WalletOption.WALLETCONNECT,
+        icon: "https://pioneers.dev/coins/walletconnect.png",
+        chains: availableChainsByWallet[WalletOption.WALLETCONNECT],
+        wallet: walletconnectWallet,
+        status: "offline",
+        isConnected: false,
+      };
+      walletsVerbose.push(walletWalletConnect);
+      const walletXDefi = {
+        type: WalletOption.XDEFI,
+        icon: "https://pioneers.dev/coins/xdefi.png",
+        chains: availableChainsByWallet[WalletOption.XDEFI],
+        wallet: xdefiWallet,
+        status: "offline",
+        isConnected: false,
+      };
+      walletsVerbose.push(walletXDefi);
+
+      // TODO test each for detection
+      onStart(walletsVerbose);
+      // return { wallets, walletsVerbose };
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   // start the context provider
   useEffect(() => {
-    // if(txid){
-    //   //set the txid
-    //   // @ts-ignore
-    //   setTxhash(txid);
-    //   setStep(2);
-    // }
-    onStart();
+    loadWallets();
   }, []);
-
-  useEffect(() => {
-    if (pubkeyContext)
-      setAddress(
-        pubkeyContext?.master || pubkeyContext?.pubkey || pubkeyContext
-      );
-  }, [pubkeyContext]);
-
-  const openModal = (type: any) => {
-    setModalType(type);
-    onOpen();
-  };
-
-  const refresh = async () => {
-    // TODO why do I need to press refresh?
-    console.log("2 pubkeyContext: ", pubkeyContext);
-    console.log("2 balances: ", balances);
-    if (pubkeyContext)
-      setAddress(
-        pubkeyContext?.master || pubkeyContext?.pubkey || pubkeyContext
-      );
-    // console.log("pubkeyContext: ", pubkeyContext);
-  };
 
   return (
     <div>
-      <Modal isOpen={isOpen} onClose={() => onClose()} size="xl">
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>{modalType}</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            {/* Render content based on modalType */}
-            {/* {modalType === "Select wallet" && ( */}
-            {/*  <div> */}
-            {/*    <WalletSelect onClose={onClose}></WalletSelect> */}
-            {/*  </div> */}
-            {/* )} */}
-            {modalType === "Select Asset" && (
-              <div>
-                <AssetSelect onClose={onClose} onlyOwned />
-              </div>
-            )}
-            {/* {modalType === "Select Blockchain" && ( */}
-            {/*  <div> */}
-            {/*    <BlockchainSelect onClose={onClose}></BlockchainSelect> */}
-            {/*  </div> */}
-            {/* )} */}
-            {/* {modalType === "View Address" && ( */}
-            {/*  <div> */}
-            {/*    {JSON.stringify(pubkeyContext)} address: {address} */}
-            {/*  </div> */}
-            {/* )} */}
-            {/* {modalType === "Select Outbound" && ( */}
-            {/*  <div> */}
-            {/*    <OutputSelect onClose={onClose} onlyOwned={false}></OutputSelect> */}
-            {/*  </div> */}
-            {/* )} */}
-          </ModalBody>
-          <ModalFooter>
-            <Button colorScheme="blue" onClick={onClose}>
-              Close
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-      {address}
-      <Tabs>
-        <TabList>
-          <Tab>Context</Tab>
-          <Tab>balances</Tab>
-          <Tab>Transfer</Tab>
-          <Tab>Swaps</Tab>
-          <Tab>Earn</Tab>
-          <Tab>Borrow</Tab>
-        </TabList>
-
-        <TabPanels>
-          <TabPanel>
-            <Basic />
-          </TabPanel>
-          <TabPanel>
-            <Balances />
-          </TabPanel>
-          <TabPanel>
-            <Transfer openModal={openModal} />
-          </TabPanel>
-          <TabPanel>{/* <Swap openModal={openModal}></Swap> */}</TabPanel>
-          <TabPanel>
-            <p>Earn</p>
-          </TabPanel>
-          <TabPanel>
-            <p>Borrow</p>
-          </TabPanel>
-        </TabPanels>
-      </Tabs>
-      <Button onClick={refresh}>refresh</Button>
+      <Basic />
     </div>
   );
 };

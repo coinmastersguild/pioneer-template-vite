@@ -9,6 +9,7 @@ import {
   Tr,
 } from "@chakra-ui/react";
 // eslint-disable-next-line import/no-extraneous-dependencies
+// @ts-ignore
 import { usePioneer } from "@pioneer-sdk/pioneer-react";
 import { useState, useEffect } from "react";
 
