@@ -4,16 +4,7 @@ import { Chain, EVMChainList, WalletOption } from "@coinmasters/types";
 import { usePioneer } from "@pioneer-sdk/pioneer-react";
 import { useEffect } from "react";
 
-// import AssetSelect from "lib/components/AssetSelect";
-// import OutputSelect from "lib/components/OutputSelect";
-// import BlockchainSelect from "lib/components/BlockchainSelect";
-// import WalletSelect from "lib/components/WalletSelect";
-// import Balances from "./components/Balances";
 import Basic from "./components/Basic";
-// // import Pubkeys from "./components/Pubkeys";
-// import Transfer from "./components/Transfer";
-// import Swap from "./components/Swap";
-// @ts-ignore
 
 // Support Array
 const AllChainsSupported = [

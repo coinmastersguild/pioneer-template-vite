@@ -60,8 +60,8 @@ dependencies:
     specifier: ^9.0.4
     version: 9.0.4(@types/node@20.8.4)
   '@pioneer-sdk/pioneer-react':
-    specifier: ^0.0.33
-    version: 0.0.33(@babel/runtime@7.23.1)(@chakra-ui/system@2.6.1)(@coinmasters/api@3.0.2)(@coinmasters/toolbox-cosmos@4.0.2)(@coinmasters/toolbox-evm@4.0.2)(@coinmasters/toolbox-utxo@4.0.2)(@types/node@20.8.4)(@types/react@18.2.27)(esbuild@0.18.20)
+    specifier: ^0.0.34
+    version: 0.0.34(@babel/runtime@7.23.1)(@chakra-ui/system@2.6.1)(@coinmasters/api@3.0.2)(@coinmasters/toolbox-cosmos@4.0.2)(@coinmasters/toolbox-evm@4.0.2)(@coinmasters/toolbox-utxo@4.0.2)(@types/node@20.8.4)(@types/react@18.2.27)(esbuild@0.18.20)
   '@typescript-eslint/parser':
     specifier: ^6.7.5
     version: 6.7.5(eslint@8.51.0)(typescript@5.2.2)
@@ -2162,7 +2162,7 @@ packages:
   /@cosmjs/amino@0.32.0:
     resolution: {integrity: sha512-i1ehEZLQo8HUGY78eum+1ZrDQ48QSkHKy0zOTBOMqce6TiwACIC5kOjRSOWdRQDILcPFzPVrbS2dIgtrdd0ykg==}
     dependencies:
-      '@cosmjs/crypto': 0.32.0
+      '@cosmjs/crypto': 0.32.1
       '@cosmjs/encoding': 0.32.1
       '@cosmjs/math': 0.32.1
       '@cosmjs/utils': 0.32.1
@@ -2371,7 +2371,7 @@ packages:
     resolution: {integrity: sha512-9401CI0U5rvKMmYrEN4DAl7wvRd5PwfOTPgxoee+O0d3LzK4FUbTjnNIM7DeUi0zaQw/qU3vSbA3ZcMqPifSbQ==}
     dependencies:
       '@cosmjs/amino': 0.32.0
-      '@cosmjs/crypto': 0.32.0
+      '@cosmjs/crypto': 0.32.1
       '@cosmjs/encoding': 0.32.1
       '@cosmjs/math': 0.32.1
       '@cosmjs/utils': 0.32.1
@@ -4360,8 +4360,8 @@ packages:
       - '@types/node'
     dev: false
 
-  /@pioneer-sdk/pioneer-react@0.0.33(@babel/runtime@7.23.1)(@chakra-ui/system@2.6.1)(@coinmasters/api@3.0.2)(@coinmasters/toolbox-cosmos@4.0.2)(@coinmasters/toolbox-evm@4.0.2)(@coinmasters/toolbox-utxo@4.0.2)(@types/node@20.8.4)(@types/react@18.2.27)(esbuild@0.18.20):
-    resolution: {integrity: sha512-PhFTQtInt6Z3IeSp0ypyjTcdhSXowSGLQs5TbAPBwXKVzyMfoXYzsLYCAKMuw9XBwr2r1/7U8In/qC2/HLwGeA==}
+  /@pioneer-sdk/pioneer-react@0.0.34(@babel/runtime@7.23.1)(@chakra-ui/system@2.6.1)(@coinmasters/api@3.0.2)(@coinmasters/toolbox-cosmos@4.0.2)(@coinmasters/toolbox-evm@4.0.2)(@coinmasters/toolbox-utxo@4.0.2)(@types/node@20.8.4)(@types/react@18.2.27)(esbuild@0.18.20):
+    resolution: {integrity: sha512-20LB/J0Uh04ocNPe8lfDm3kPvmCkzSzVhKLTbE2oDwfuy6y5y2bxVgZVklPubXLuhth+sUBDkAgduEs2evPkGQ==}
     dependencies:
       '@chakra-ui/icons': 2.1.1(@chakra-ui/system@2.6.1)(react@18.2.0)
       '@chakra-ui/react': 2.8.1(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.27)(framer-motion@10.16.4)(react-dom@18.2.0)(react@18.2.0)
@@ -4376,7 +4376,7 @@ packages:
       '@fontsource/plus-jakarta-sans': 4.5.11
       '@fontsource/roboto': 5.0.8
       '@pioneer-platform/pioneer-coins': 9.0.4(@types/node@20.8.4)
-      '@pioneer-sdk/sdk': 2.0.14
+      '@pioneer-sdk/sdk': 2.0.16
       '@types/ramda': 0.28.23
       '@types/uuid': 9.0.5
       assert: 2.1.0
@@ -4418,8 +4418,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@pioneer-sdk/sdk@2.0.14:
-    resolution: {integrity: sha512-GNkYyLsn+6gY+doAcK5LttVHggv0vj0u1VLL/rx9juCt/VS5JnczAViKFDwhzk+D5leqBitHvabGdo8cwjWrCQ==}
+  /@pioneer-sdk/sdk@2.0.16:
+    resolution: {integrity: sha512-mcKH7y66w7cfInXdsR+fxsrXkG6ZMD8LDfz2Drw7nJ/2PZZy2dcLYIpxcxBJYlzKq+hKgk4SLL9cd41WgfBOHA==}
     dependencies:
       '@coinmasters/api': 3.0.2
       '@coinmasters/core': 4.0.2(@coinmasters/api@3.0.2)(@coinmasters/tokens@3.0.1)(@coinmasters/toolbox-cosmos@4.0.2)(@coinmasters/toolbox-evm@4.0.2)(@coinmasters/toolbox-utxo@4.0.2)
@@ -6835,7 +6835,7 @@ packages:
     resolution: {integrity: sha512-nK1psgF2cXqP3wSyCSq0Hc7zwNq3sfljQqaG27r/7a7ooNUnn5nGq6yYWyks9jMO5EoFQ0ax80hSg6oXSRNXaw==}
     engines: {node: '>= 0.4'}
     dependencies:
-      call-bind: 1.0.2
+      call-bind: 1.0.5
       define-properties: 1.2.1
       es-abstract: 1.22.1
       es-array-method-boxes-properly: 1.0.0
@@ -6890,7 +6890,7 @@ packages:
   /assert@2.1.0:
     resolution: {integrity: sha512-eLHpSK/Y4nhMJ07gDaAzoX/XAKS8PSaojml3M0DM4JpV1LAi5JOJ/p6H/XWrl8L+DzVEvVCW1z3vWAaB9oTsQw==}
     dependencies:
-      call-bind: 1.0.2
+      call-bind: 1.0.5
       is-nan: 1.3.2
       object-is: 1.1.5
       object.assign: 4.1.4
@@ -7417,7 +7417,6 @@ packages:
       function-bind: 1.1.2
       get-intrinsic: 1.2.1
       set-function-length: 1.1.1
-    dev: false
 
   /callsites@3.1.0:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
@@ -8231,7 +8230,6 @@ packages:
       get-intrinsic: 1.2.1
       gopd: 1.0.1
       has-property-descriptors: 1.0.0
-    dev: false
 
   /define-lazy-prop@3.0.0:
     resolution: {integrity: sha512-N+MeXYoqr3pOgn8xfyRPREN7gHakLYjhsHhWGT3fWAiL4IkAt0iDw14QiiEm2bE30c5XX5q0FtAA3CK5f9/BUg==}
@@ -8546,7 +8544,7 @@ packages:
       define-data-property: 1.1.1
       define-properties: 1.2.1
       es-abstract: 1.22.1
-      function-bind: 1.1.1
+      function-bind: 1.1.2
       get-intrinsic: 1.2.1
       globalthis: 1.0.3
       has-property-descriptors: 1.0.0
@@ -8560,7 +8558,7 @@ packages:
   /es-get-iterator@1.1.3:
     resolution: {integrity: sha512-sPZmqHBe6JIiTfN5q2pEi//TwxmAFHwj/XEuYjTuse78i8KxaqMTTzxPoFKuzRpDpTJ+0NAbpfenkmH2rePtuw==}
     dependencies:
-      call-bind: 1.0.2
+      call-bind: 1.0.5
       get-intrinsic: 1.2.1
       has-symbols: 1.0.3
       is-arguments: 1.1.1
@@ -9569,7 +9567,6 @@ packages:
 
   /function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
-    dev: false
 
   /function.prototype.name@1.1.5:
     resolution: {integrity: sha512-uN7m/BzVKQnCUF/iW8jYea67v++2u7m5UgENbHRtdDVclOUP+FMPlCNdmk0h/ysGyo2tavMJEDqJAkJdRa1vMA==}
@@ -10056,7 +10053,7 @@ packages:
     resolution: {integrity: sha512-8Q7EARjzEnKpt/PCD7e1cgUS0a6X8u5tdSiMqXhojOdoV9TsMsiO+9VLC5vAmO8N7/GmXn7yjR8qnA6bVAEzfA==}
     engines: {node: '>= 0.4'}
     dependencies:
-      call-bind: 1.0.2
+      call-bind: 1.0.5
       has-tostringtag: 1.0.0
     dev: false
 
@@ -10085,7 +10082,7 @@ packages:
     resolution: {integrity: sha512-gDYaKHJmnj4aWxyj6YHyXVpdQawtVLHU5cb+eztPGczf6cjuTdwve5ZIEfgXqH4e57An1D1AKf8CZ3kYrQRqYA==}
     engines: {node: '>= 0.4'}
     dependencies:
-      call-bind: 1.0.2
+      call-bind: 1.0.5
       has-tostringtag: 1.0.0
 
   /is-builtin-module@3.2.1:
@@ -10177,7 +10174,7 @@ packages:
     resolution: {integrity: sha512-E+zBKpQ2t6MEo1VsonYmluk9NxGrbzpeeLC2xIViuO2EjU2xsXsBPwTr3Ykv9l08UYEVEdWeRZNouaZqF6RN0w==}
     engines: {node: '>= 0.4'}
     dependencies:
-      call-bind: 1.0.2
+      call-bind: 1.0.5
       define-properties: 1.2.1
     dev: false
 
@@ -11234,7 +11231,7 @@ packages:
     resolution: {integrity: sha512-3cyDsyHgtmi7I7DfSSI2LDp6SK2lwvtbg0p0R1e0RvTqF5ceGx+K2dfSjm1bKDMVCFEDAQvy+o8c6a7VujOddw==}
     engines: {node: '>= 0.4'}
     dependencies:
-      call-bind: 1.0.2
+      call-bind: 1.0.5
       define-properties: 1.2.1
     dev: false
 
@@ -11701,7 +11698,7 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       array.prototype.map: 1.0.6
-      call-bind: 1.0.2
+      call-bind: 1.0.5
       define-properties: 1.2.1
       es-abstract: 1.22.1
       es-aggregate-error: 1.0.11
@@ -12637,7 +12634,6 @@ packages:
       get-intrinsic: 1.2.1
       gopd: 1.0.1
       has-property-descriptors: 1.0.0
-    dev: false
 
   /set-function-name@2.0.1:
     resolution: {integrity: sha512-tMNCiqYVkXIZgc2Hnoy2IvC/f8ezc5koaRFkCjrpWzGpCd3qbZXPzVy9MAZzK1ch/X0jvSkojys3oqJN0qCmdA==}
