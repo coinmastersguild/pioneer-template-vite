@@ -1,12 +1,12 @@
 import { Helmet } from "react-helmet";
 
-const APP_NAME = "vite-react-chakra-starter";
+const APP_NAME = "Pioneer Template";
 
 const Meta = () => {
   return (
     <Helmet>
-      <title>Vite React Chakra Starter</title>
-      <meta name="description" content="Vite React Chakra Starter Template" />
+      <title>{APP_NAME}</title>
+      <meta name="description" content={APP_NAME} />
 
       <meta name="application-name" content={APP_NAME} />
       <meta name="apple-mobile-web-app-capable" content="yes" />
