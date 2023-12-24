@@ -1,3 +1,4 @@
+require('dotenv').config();
 /* eslint-disable import/no-extraneous-dependencies */
 import react from "@vitejs/plugin-react";
 import million from "million/compiler";

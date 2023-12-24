@@ -141,7 +141,7 @@ export const initWallets = async (onStart: any) => {
     walletsVerbose.push(walletXDefi);
 
     // appIcon info
-
+    console.log("pioneerSetup: ", pioneerSetup);
     onStart(walletsVerbose, pioneerSetup);
   } catch (e) {
     console.error(e);
