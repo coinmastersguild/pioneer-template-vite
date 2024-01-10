@@ -6,7 +6,7 @@
   "scripts": {
     "pnpm": "pnpm i",
     "dev": "vite",
-    "build": "NODE_OPTIONS=--max_old_space_size=8192 tsc && NODE_OPTIONS=--max_old_space_size=8192 vite build",
+    "build": "NODE_OPTIONS=--max_old_space_size=28192 tsc && NODE_OPTIONS=--max_old_space_size=28192 vite build",
     "build:turbo": "NODE_OPTIONS=--max_old_space_size=7000 npx turbo build",
     "build:serve": "pnpm build && pnpm serve",
     "serve": "vite preview",
