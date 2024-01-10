@@ -87,8 +87,8 @@ dependencies:
     specifier: ^9.0.4
     version: 9.0.4(@types/node@20.8.4)
   '@pioneer-sdk/pioneer-react':
-    specifier: 0.0.48
-    version: 0.0.48(@chakra-ui/system@2.6.2)(@types/node@20.8.4)(@types/react@18.2.27)(esbuild@0.19.10)(framer-motion@10.16.4)(rollup@3.29.4)
+    specifier: 0.0.50
+    version: 0.0.50(@chakra-ui/system@2.6.2)(@types/node@20.8.4)(@types/react@18.2.27)(esbuild@0.19.10)(framer-motion@10.16.4)(rollup@3.29.4)
   '@typescript-eslint/parser':
     specifier: ^6.7.5
     version: 6.7.5(eslint@8.51.0)(typescript@5.2.2)
@@ -5588,8 +5588,8 @@ packages:
       - '@types/node'
     dev: false
 
-  /@pioneer-sdk/pioneer-react@0.0.48(@chakra-ui/system@2.6.2)(@types/node@20.8.4)(@types/react@18.2.27)(esbuild@0.19.10)(framer-motion@10.16.4)(rollup@3.29.4):
-    resolution: {integrity: sha512-6RxzJ7Ke2sAgpG/RgdSb3IzdmPyPdcqXwwTVV6wLs7PVKCuofgf5SsI4mtEYIRfuqQSGk7grNNk4DsRRKn3HuA==}
+  /@pioneer-sdk/pioneer-react@0.0.50(@chakra-ui/system@2.6.2)(@types/node@20.8.4)(@types/react@18.2.27)(esbuild@0.19.10)(framer-motion@10.16.4)(rollup@3.29.4):
+    resolution: {integrity: sha512-9EdEVQu1DZmJzmzSdjSmBMa61KqKMB/YUQiNfeJaU/uYSfjAVG3cVHloJ+o/0UVw7McDy8Afxoyd1qJ0hLyd4g==}
     dependencies:
       '@chakra-ui/icons': 2.1.1(@chakra-ui/system@2.6.2)(react@18.2.0)
       '@chakra-ui/react': 2.8.2(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.27)(framer-motion@10.16.4)(react-dom@18.2.0)(react@18.2.0)
