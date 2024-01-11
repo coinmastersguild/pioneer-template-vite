@@ -15,8 +15,10 @@ import { useState, useEffect } from "react";
 
 const Basic = () => {
   const { state } = usePioneer();
-  const { context, assetContext, blockchainContext, pubkeyContext } = state;
+  const { context, assetContext, pubkeyContext } = state;
   const [address, setAddress] = useState("");
+  const [selectedAsset, setAsset] = useState("");
+  const [selectedBlockchain, setBlockchain] = useState("");
 
   useEffect(() => {
     if (pubkeyContext)
@@ -24,6 +26,12 @@ const Basic = () => {
         pubkeyContext?.master || pubkeyContext?.pubkey || pubkeyContext
       );
   }, [pubkeyContext]);
+
+  useEffect(() => {
+    setAsset(assetContext?.name);
+    setBlockchain(assetContext.chain);
+    setAddress(assetContext.address);
+  }, [assetContext]);
 
   return (
     <div>
@@ -42,11 +50,11 @@ const Basic = () => {
             </Tr>
             <Tr>
               <Td>Asset Context</Td>
-              <Td>{assetContext?.asset?.name}</Td>
+              <Td>{selectedAsset}</Td>
             </Tr>
             <Tr>
               <Td>Blockchain Context</Td>
-              <Td>{blockchainContext?.name}</Td>
+              <Td>{selectedBlockchain}</Td>
             </Tr>
             <Tr>
               <Td>Address for context</Td>
