@@ -29,8 +29,8 @@ const Basic = () => {
 
   useEffect(() => {
     setAsset(assetContext?.name);
-    setBlockchain(assetContext.chain);
-    setAddress(assetContext.address);
+    setBlockchain(assetContext?.chain);
+    setAddress(assetContext?.address);
   }, [assetContext]);
 
   return (
