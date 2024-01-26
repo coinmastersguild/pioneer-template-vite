@@ -48,7 +48,7 @@
     "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "@fontsource/plus-jakarta-sans": "^5.0.15",
     "@pioneer-platform/pioneer-coins": "^9.0.4",
-    "@pioneer-sdk/pioneer-react": "0.0.50",
+    "@pioneer-sdk/pioneer-react": "0.1.8",
     "@typescript-eslint/parser": "^6.7.5",
     "buffer": "^6.0.3",
     "dotenv": "^16.3.1",

@@ -5,6 +5,7 @@ import { WalletOption, availableChainsByWallet } from "@coinmasters/types";
 const pioneerSetup: any = {
   appName: "Pioneer Template",
   appIcon: "https://pioneers.dev/coins/pioneerMan.png",
+  blockchairApiKey: "B_s9XK926uwmQSGTDEcZB3vSAmt5t2",
 };
 
 // Define the initWallets function
