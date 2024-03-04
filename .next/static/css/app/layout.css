@@ -655,11 +655,17 @@ video {
 .ml-auto {
   margin-left: auto;
 }
+.mt-4 {
+  margin-top: 1rem;
+}
 .flex {
   display: flex;
 }
 .inline-flex {
   display: inline-flex;
+}
+.table {
+  display: table;
 }
 .h-10 {
   height: 2.5rem;
@@ -688,6 +694,9 @@ video {
 .h-px {
   height: 1px;
 }
+.h-12 {
+  height: 3rem;
+}
 .w-10 {
   width: 2.5rem;
 }
@@ -709,8 +718,17 @@ video {
 .w-full {
   width: 100%;
 }
+.w-\[100px\] {
+  width: 100px;
+}
+.w-\[75\%\] {
+  width: 75%;
+}
 .min-w-\[8rem\] {
   min-width: 8rem;
+}
+.caption-bottom {
+  caption-side: bottom;
 }
 .rotate-0 {
   --tw-rotate: 0deg;
@@ -756,6 +774,9 @@ video {
 .gap-4 {
   gap: 1rem;
 }
+.overflow-auto {
+  overflow: auto;
+}
 .overflow-hidden {
   overflow: hidden;
 }
@@ -770,6 +791,12 @@ video {
 }
 .border {
   border-width: 1px;
+}
+.border-b {
+  border-bottom-width: 1px;
+}
+.border-t {
+  border-top-width: 1px;
 }
 .border-input {
   border-color: hsl(var(--input));
@@ -792,6 +819,9 @@ video {
 .bg-secondary {
   background-color: hsl(var(--secondary));
 }
+.bg-muted\/50 {
+  background-color: hsl(var(--muted) / 0.5);
+}
 .fill-current {
   fill: currentColor;
 }
@@ -800,6 +830,9 @@ video {
 }
 .p-24 {
   padding: 6rem;
+}
+.p-4 {
+  padding: 1rem;
 }
 .px-2 {
   padding-left: 0.5rem;
@@ -829,23 +862,46 @@ video {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
+.px-20 {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+.px-24 {
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
 .pl-8 {
   padding-left: 2rem;
 }
 .pr-2 {
   padding-right: 0.5rem;
 }
+.pl-24 {
+  padding-left: 6rem;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.align-middle {
+  vertical-align: middle;
+}
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
 }
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+.font-bold {
+  font-weight: 700;
 }
 .font-medium {
   font-weight: 500;
@@ -870,6 +926,9 @@ video {
 }
 .text-secondary-foreground {
   color: hsl(var(--secondary-foreground));
+}
+.text-muted-foreground {
+  color: hsl(var(--muted-foreground));
 }
 .underline-offset-4 {
   text-underline-offset: 4px;
@@ -938,6 +997,10 @@ video {
   background-color: hsl(var(--secondary) / 0.8);
 }
  
+.hover\:bg-muted\/50:hover {
+  background-color: hsl(var(--muted) / 0.5);
+}
+ 
 .hover\:text-accent-foreground:hover {
   color: hsl(var(--accent-foreground));
 }
@@ -987,6 +1050,10 @@ video {
  
 .data-\[state\=open\]\:bg-accent[data-state=open] {
   background-color: hsl(var(--accent));
+}
+ 
+.data-\[state\=selected\]\:bg-muted[data-state=selected] {
+  background-color: hsl(var(--muted));
 }
  
 .data-\[disabled\]\:opacity-50[data-disabled] {
@@ -1065,4 +1132,20 @@ video {
   --tw-scale-x: 1;
   --tw-scale-y: 1;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+ 
+.\[\&\:has\(\[role\=checkbox\]\)\]\:pr-0:has([role=checkbox]) {
+  padding-right: 0px;
+}
+ 
+.\[\&\>tr\]\:last\:border-b-0:last-child>tr {
+  border-bottom-width: 0px;
+}
+ 
+.\[\&_tr\:last-child\]\:border-0 tr:last-child {
+  border-width: 0px;
+}
+ 
+.\[\&_tr\]\:border-b tr {
+  border-bottom-width: 1px;
 }
