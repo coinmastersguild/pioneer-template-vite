@@ -1,12 +1,11 @@
 import Image from "next/image";
 // import { Pioneer } from "@pioneer-sdk/pioneer-react";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { TopBar } from "@/components/TopBar";
+import { TopBar } from "@/components/layout/TopBar";
 
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center p-24">
-      <TopBar />
       <div className="flex flex-row items-center justify-center w-[75%]">
         <Table>
           <TableCaption>Connected address: </TableCaption>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import Layout from "@/components/layout/Layout";
 // import { PioneerProvider } from "@pioneer-sdk/pioneer-react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,7 +24,9 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem>
           {/* <PioneerProvider> */}
-          {children}
+          <Layout>
+            {children}
+          </Layout>
           {/* </PioneerProvider> */}
         </ThemeProvider >
       </body>

@@ -697,6 +697,12 @@ video {
 .h-12 {
   height: 3rem;
 }
+.h-screen {
+  height: 100vh;
+}
+.h-full {
+  height: 100%;
+}
 .w-10 {
   width: 2.5rem;
 }
@@ -774,6 +780,9 @@ video {
 .gap-4 {
   gap: 1rem;
 }
+.gap-1 {
+  gap: 0.25rem;
+}
 .overflow-auto {
   overflow: auto;
 }
@@ -833,6 +842,9 @@ video {
 }
 .p-4 {
   padding: 1rem;
+}
+.p-5 {
+  padding: 1.25rem;
 }
 .px-2 {
   padding-left: 0.5rem;
@@ -929,6 +941,10 @@ video {
 }
 .text-muted-foreground {
   color: hsl(var(--muted-foreground));
+}
+.text-zinc-500 {
+  --tw-text-opacity: 1;
+  color: rgb(113 113 122 / var(--tw-text-opacity));
 }
 .underline-offset-4 {
   text-underline-offset: 4px;
@@ -1132,6 +1148,14 @@ video {
   --tw-scale-x: 1;
   --tw-scale-y: 1;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+ 
+@media (min-width: 1024px) {
+
+  .lg\:px-24 {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
 }
  
 .\[\&\:has\(\[role\=checkbox\]\)\]\:pr-0:has([role=checkbox]) {
