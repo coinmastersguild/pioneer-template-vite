@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
 import Layout from "@/components/layout/Layout";
-// import { PioneerProvider } from "@pioneer-sdk/pioneer-react";
+import { Providers } from "@/components/layout/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,16 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem>
-          {/* <PioneerProvider> */}
+        <Providers>
           <Layout>
             {children}
           </Layout>
-          {/* </PioneerProvider> */}
-        </ThemeProvider >
+        </Providers>
       </body>
     </html>
   );
