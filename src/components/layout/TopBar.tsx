@@ -1,9 +1,16 @@
+"use client"
 import { ColorModeToggle } from "../ColorModeToggle";
 import { Button } from "../ui/button";
-
+// @ts-ignore
+import { usePioneer } from '@coinmasters/pioneer-react';
 
 
 export function TopBar() {
+    const { state } = usePioneer();
+    const { app, balances } = state;
+    
+    
+    
     return (
         <div className="flex flex-row w-full gap-4">
             <div className="flex flex-row items-center justify-center gap-4 w-full pl-24">
